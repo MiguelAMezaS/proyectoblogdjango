@@ -1,0 +1,44 @@
+#Boton-ir-arriba {
+    display: none;
+    z-index: 500;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    bottom: 135px;
+    right: 44px;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 50% !important;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 0
+}
+
+#Boton-ir-arriba:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2db742;
+    opacity: .7;
+    transition: opacity .17s ease
+}
+
+#Boton-ir-arriba:after {
+    content: '\f077';
+    position: relative;
+    font-size: 30px;
+    font-family: FontAwesome;
+    font-weight: 400;
+    opacity: .8;
+    transition: opacity .17s ease
+}
+
+#Boton-ir-arriba:hover:before,
+#Boton-ir-arriba:hover:after {
+    opacity: 1
+}
