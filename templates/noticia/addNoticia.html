@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<main>
+    <div class="addnoticia-container">
+        {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+        <h1>Crear una publicación</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+            <input class="btn btn-primary addnoticia-submitbutton" type="submit" value="Enviar Publicación">
+        </form>
+            {% else %}
+                <p>No tienes permisos para crear una publicación</p>
+            {% endif %}
+        {% else %}
+            <p>No estás autenticado</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

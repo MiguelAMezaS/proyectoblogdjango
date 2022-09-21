@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<title>Noticias</title>
+
+<section data-bs-version="5.1" class="content2 cid-teaDptnH4j" id="content2-1r">
+    <div class="container">
+        {% if noticia %}
+            <div class="mbr-section-head">
+                <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>{{ noticia.titulo }}</strong></h4>
+            </div>
+            <div class="row mt-4">
+            <div class="item features-image сol-12">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        {% if noticia.imagen %}
+                            <img src="{{ noticia.imagen.url }}" alt="" title="" data-slide-to="3" data-bs-slide-to="3">
+                        {% else %}
+                            <img src="{% static 'img/noticia/default.jpg' %}" alt="" title="" data-slide-to="3" data-bs-slide-to="3">
+                        {% endif %}
+                        <p class="btn btn-danger btn-sm item-categoria">{{ noticia.categoria.nombre }}</p>
+                    </div> 
+                    <div class="item-content">
+                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7"><strong>Autor: {{ noticia.usuario.first_name }} {{ noticia.usuario.last_name }} ({{ noticia.usuario.username }})</strong></h6>
+                        <em>{% comment %}&nbsp;{% endcomment %}{{ noticia.fecha_publicacion }}</em> 
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">{{ noticia.resumen }}<br>
+                        </p>
+                        {% comment %} <div class="likes-dislikes">
+                            <span class="likes">
+                                <form method="POST" action="{% url 'apps.noticia:agregarDislike' noticia.pk %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{request.path}}">
+                                    <button type="submit" class="fa fa-regular fa-thumbs-up"></button>
+                                    <span>{{ noticia.likes.all.count }}</span>
+                                </form>
+                            </span>
+                            
+                            <span class="dislikes">
+                                <form method="POST" action="{% url 'apps.noticia:agregarDislike' noticia.pk %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{request.path}}">
+                                    <button type="submit" class="fa fa-regular fa-thumbs-down"></button>
+                                    <span>{{ noticia.dislikes.all.count }}</span>
+                                </form>
+                            </span>
+                        </div> {% endcomment %}
+
+                        <div class="mbr-text mbr-fonts-style mt-3 display-7 item-contenido">
+                            {{ noticia.contenido|safe }}
+                        </div>
+                        <div class="comentarios-container">
+                            <div class="comentarios">
+                                <h5 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">Comentarios</h5>
+                                {% for comentario in comentarios %}
+                                    <div class="comentario">
+                                        <div class="comentario-autor">
+                                            <strong>{{ comentario.usuario.first_name }} {{ comentario.usuario.last_name }} ({{ comentario.usuario.username }})</strong>
+                                        </div>
+                                        <div class="comentario-contenido">
+                                            {{ comentario.comentario }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="comentario-form">
+                                <form method="POST" action="#">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{request.path}}">
+                                    <div class="form-group">
+                                        <label for="comentario">Comentario</label>
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="2"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+            <h1>Pubicación borrada</h1>
+        {% endif %}
+    </div>
+</section>
+
+
+{% endblock %}

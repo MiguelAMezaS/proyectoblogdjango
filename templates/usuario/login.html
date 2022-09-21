@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block contenido %}
+{% load account socialaccount %}
+{% providers_media_js %}
+{% get_providers as socialaccount_providers %}
+{% load static %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <main>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/web/assets/mobirise-icons2/mobirise2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/dropdown/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/socicon/css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/theme/css/style.css' %}">
+        
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap">
+    </noscript>
+    <link rel="preload" as="style" href="{% static 'assets/mobirise/css/mbr-additional.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
+        
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Conectarse</title>
+    <div class="content">
+        <div class="container">
+          <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />      
+          <div class="row">
+            {% if user.is_authenticated %}
+                      <h1>Ya estas conectado como {{ user.username }}</h1>
+                      <a href="{% url 'apps.usuario:logout' %}">
+                        <button type="button" class="btn btn-primary col-md-4">Salir</button>
+                      </a>
+                      
+                    {% else %}
+            <div class="col-md-6">
+              <img src="{% static 'img/undraw_remotely_2j6y.svg' %}" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-6 contents">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="mb-4">
+                  <h3>Conectarse</h3>
+                  {% comment %} <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> {% endcomment %}
+                </div>
+                <form method="post">{% csrf_token %}
+                  <div class="input-field">
+                    <label for="id_username">Usuario</label>
+                    <input type="text" name="username" class="validate" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+                  </div>
+                  
+                  <div class="input-field mb-4">
+                    <label for="id_password">Contraseña</label>
+                    <input type="password" name="password" class="validate" autofocus="" autocomplete="current-password" required="" id="id_password">
+                  </div>
+                  
+                <div class="d-flex mb-5 align-items-center">
+                    <label>
+                        <input type="checkbox" class="filled-in" checked="checked" />
+                        <span class="caption">Recordarme</span>
+                        <div class="control__indicator"></div>
+                    </label>
+                      
+                    
+                        {% comment %} <a class="google-btn" href="{% provider_login_url 'google' %}">
+                        	<div class="google-icon-wrapper">
+                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                        	</div>
+                        	<p class="btn-text"><b>Sign in with google</b></p>
+                        </a> {% endcomment %}
+                    {% comment %} <label class="control control--checkbox mb-0"><span class="caption">Recordarme</span>
+                    	<input type="checkbox" checked="checked"/>
+                    	<div class="control__indicator"></div>
+                    </label> {% endcomment %}
+                    {% comment %} <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>  {% endcomment %}
+                  	</div>
+                    <button class="btn waves-effect waves-light btn-entrar" type="submit" name="action">Entrar
+                      <i class="material-icons right">send</i>
+                    </button>
+
+                    <span class="d-block text-center my-4 text-muted">&mdash; o &mdash;</span>
+              
+                    <div class="social-login">
+                      <a class="google btn d-flex justify-content-center center-align align-items-center waves-effect waves-light" href="{% provider_login_url 'google' %}">
+                        <span class="mr-3 img-logo-social"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span> Entrar con Google
+                      </a>
+                      {% comment %} <a href="#" class="facebook btn d-flex justify-content-center align-items-center">
+                        <span class="icon-facebook mr-3 img-logo-social"></span> Conectar con Facebook
+                      </a>
+                      <a href="#" class="twitter btn d-flex justify-content-center align-items-center">
+                        <span class="icon-twitter mr-3 img-logo-social"></span> Conectar con Twitter
+                      </a> {% endcomment %}
+                    </div>
+
+                    <div class="text-center my-4">
+                      <p class="text-muted">No tienes una cuenta? <a href="{% url 'apps.usuario:register' %}">Registrate</a></p>
+                    </div>
+                    <div class="text-center my-4">
+                      <p class="text-muted">¿Olvidaste tu contraseña? <a href="{% url 'password_reset' %}">Recuperarla</a></p>
+                    </div>
+                  	{% endif %}
+                  
+
+                  {% comment %} <input type="submit" value="Conectarse" class="btn btn-block btn-primary"> {% endcomment %}
+    
+                  {% comment %} <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
+                  
+                  <div class="social-login">
+                    <a href="#" class="facebook">
+                      <span class="icon-facebook mr-3"></span> 
+                    </a>
+                    <a href="#" class="twitter">
+                      <span class="icon-twitter mr-3"></span> 
+                    </a>
+                    <a href="#" class="google">
+                      <span class="icon-google mr-3"></span> 
+                    </a>
+                  </div> {% endcomment %}
+                </form>
+                </div>
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+<script src="{% static 'js/materialize.min.js' %}"></script>
+
+{% endblock %}

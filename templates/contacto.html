@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block contenido %}
+{% load static %}
+
+
+<section data-bs-version="5.1" class="contacts1 cid-teavXt7gXL" id="contacts1-1k">
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                <strong>Contacto</strong>
+            </h3>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="card col-12 col-lg-6">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <div class="image-wrapper">
+                            <span class="mbr-iconfont mobi-mbri-letter mobi-mbri" style="color: rgb(34, 165, 229); fill: rgb(34, 165, 229);"></span>
+                        </div>
+                        <h4 class="card-title mbr-fonts-style mb-2 display-2">
+                            <strong>Email</strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-2 display-4">
+                            Le contestaremos lo antes posible.</p>
+                        <h5 class="link mbr-fonts-style display-7"><a href="mailto:oportinidaddecambiomachagai@gmail.com" class="text-primary">Contactar vía email</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-12 col-lg-6">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <div class="image-wrapper">
+                            <span class="mbr-iconfont mobi-mbri-mobile-2 mobi-mbri" style="color: rgb(34, 165, 229); fill: rgb(34, 165, 229);"></span>
+                        </div>
+                        <h4 class="card-title mbr-fonts-style align-center mb-2 display-2" id="ir-al-formulario"><strong>Teléfono</strong></h4>
+                        <p class="mbr-text mbr-fonts-style mb-2 display-4">Lun - Vie 09:00 - 22:00</p>
+                        <h5 class="link mbr-black mbr-fonts-style display-7"><a href="tel:+543734403707" class="text-primary">Llamar (+54) 3734 403707&nbsp;</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'componentes/enviar_correo.html' %}
+
+<section data-bs-version="5.1" class="share3 cid-teawKOXUE0" id="share3-1p">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-3 mbr-fonts-style display-2"><strong>Síguenos en nuestras redes!</strong>
+                </h3>
+                <div class="social-list align-center">
+                    {% if is_mobile %}
+                    <a class="iconfont-wrapper bg-facebook m-2" class="mobile" href="fb://facewebmodal/f?href=https://www.facebook.com/oportunidadecambio" target="_blank">
+                        <span class="socicon-facebook socicon"></span>
+                    </a>
+                    {% else %}
+                    <a class="iconfont-wrapper bg-facebook m-2" href="https://www.facebook.com/oportunidadecambio" target="_blank">
+                        <span class="socicon-facebook socicon"></span>
+                    </a>
+                    {% endif %}
+                    
+                        
+                    <a class="iconfont-wrapper bg-instagram m-2" href="https://www.instagram.com/oportunidaddecambiomachagai" target="_blank">
+                        <span class="socicon-instagram socicon" style=""></span>
+                    </a>
+
+                    <a class="iconfont-wrapper bg-youtube m-2" href="https://www.youtube.com/channel/UC1d7YyEAKvGMffpCCiExGYg" target="_blank">
+                        <span class="socicon-youtube socicon" style=""></span>
+                    </a>   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="map2 cid-teavYceLTC" id="map2-1l">
+    <div>
+        <div class="mbr-section-head mb-4">
+            
+            <h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-5">
+                Las Heras 345, Machagai, Chaco</h4>
+        </div>
+        <div class="google-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2070.0326311177723!2d-60.0545239806643!3d-26.916251905297873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9446ba94ac7896cd%3A0x61f20224831a6fe0!2sLas%20Heras%20345%2C%20Machagai%2C%20Chaco!5e0!3m2!1ses-419!2sar!4v1660707505808!5m2!1ses-419!2sar" width="1920" height="400" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {% comment %} <iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1778.7981623228325!2d-60.055520424088954!3d-26.916303595760745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9446ba94ac7896cd%3A0x61f20224831a6fe0!2sLas%20Heras%20345%2C%20Machagai%2C%20Chaco!5e0!3m2!1ses-419!2sar!4v1659577309323!5m2!1ses-419!2sar" allowfullscreen=""></iframe> {% endcomment %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

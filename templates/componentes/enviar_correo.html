@@ -1,0 +1,74 @@
+{% load static %}
+
+<section data-bs-version="5.1" class="form5 cid-teaBUpEJxv" id="form5-1q">
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Escribinos</strong></h3>
+            {% comment %} <link rel="stylesheet" href="{% static 'css/materialize.css' %}"> {% endcomment %}
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <form action="https://formsubmit.co/svpr0@hotmail.com" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
+                    <input type="hidden" name="_url" value="http://www.oportunidaddecambio.com.ar/contacto">
+                    <input type="hidden" name="_next" value="http://www.oportunidaddecambio.com.ar/contacto#ir-al-formulario">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse" value="Oportunidad de Cambio recibió tu mensaje.">
+                    <input type="hidden" name="_subject" value="Nuevo mensaje recibido de www.OportunidadDeCambio.com.ar">
+                    {% comment %} <input type="hidden" name="_cc" value=" otro@email.com , aúnotro@email.com "> {% endcomment %}
+                    <div class="dragArea row">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                            <input type="text" name="name" placeholder="Nombre" class="form-control" value="" id="name-form5-1q">
+                        </div>
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
+                            <input type="email" name="email" placeholder="E-mail" class="form-control" value="" id="email-form5-1q">
+                        </div>
+                        
+                        <div class="col-12 form-group mb-3" data-for="textarea">
+                            <textarea name="textarea" placeholder="Mensaje" type"textarea" class="form-control" id="textarea-form5-1q"></textarea>
+                        </div>
+
+                        {% comment %} <div class="row">
+                            <form class="col s12">
+                              <div class="row">
+                                <div class="input-field col s12">
+                                  <input id="input_text" name="name" type="text" data-length="10">
+                                  <label for="input_text">Nombre</label>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" name="email" type="email" data-length="30">
+                                    <label for="email">E-mail</label>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="input-field col s12">
+                                  <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+                                  <label for="textarea2">Mensaje</label>
+                                </div>
+                              </div>
+                            </form>
+                          </div> {% endcomment %}
+
+                        {% comment %} <div class="col-12 form-group mb-3" data-for="attachment">
+                            <input type="file" name="attachment" accept="image/png, image/jpeg">
+                        </div> {% endcomment %}
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                            
+                            <button type="submit" class="btn btn-primary display-4">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% comment %} <script>
+    $(document).ready(function() {
+        $('input#input_text, textarea#textarea2').characterCounter();
+      });
+</script>
+<script src="{% static 'js/materialize.min.js' %}"></script> {% endcomment %}

@@ -1,0 +1,9 @@
+{% load static %}
+{% if categorias %}
+    {% for cat in categorias %}
+    <a class="show dropdown-item text-white display-4" href="{% url 'apps.noticia:categoria' cat.pk %}">{{cat.pk}}</a>
+    {% endfor %}
+
+{% else %}
+    <h1>ERROR 125</h1>
+{% endif %}

@@ -1,0 +1,228 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" type="image/x-icon">
+        <meta name="description" content="Página oficial de Oportunidad de Cambio (Machagai - Chaco)">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="512x512" href="{% static 'img/favicon/android-chrome-512x512.png' %}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicon/android-chrome-192x192.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}">
+        <link rel="mask-icon" href="{% static 'img/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#2d89ef">
+        <meta name="msapplication-TileImage" content="{% static 'img/favicon/mstile-144x144.png' %}">
+        <meta name="theme-color" content="#ffffff">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <title>Oportunidad de Cambio</title>
+
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/web/assets/mobirise-icons2/mobirise2.css' %}">
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}"> {% endcomment %}
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap-grid.min.css' %}"> {% endcomment %}
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap-reboot.min.css' %}"> {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/dropdown/css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/socicon/css/styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/theme/css/style.css' %}">
+        <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet"
+                href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap">
+        </noscript>
+        <link rel="preload" as="style" href="{% static 'assets/mobirise/css/mbr-additional.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/whatsapp/css/whatsapp.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/toparrow/css/style.css' %}">
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> {% endcomment %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}">
+    </head>
+
+<body>
+    <header>
+        <section data-bs-version="5.1" class="menu cid-tehBAV6lVv" once="menu" id="menu1-2c">
+            <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+                <div class="container-fluid">
+                    <div class="navbar-brand">
+                        <span class="navbar-logo">
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'img/logo-odec-blanco-396x185.png' %}"
+                                    alt="Asociación Civil Oportunidad de Cambio" style="height: 5.8rem;">
+                            </a>
+                        </span>
+
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                        data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+
+                            <li class="nav-item"><a class="nav-link link text-white display-4"
+                                    href="{% url 'index' %}">INICIO</a></li>
+
+                            <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4"
+                                    href="{% url 'noticias' %}" data-toggle="dropdown-submenu" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false">NOTICIAS</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-375">
+                                    {% comment %} <a class="nav-link link text-white display-4" {% endcomment %}
+                                    {% comment %} <a class="show dropdown-item text-white display-4"
+                                    href="{% url 'noticias' %}">Todas</a> {% endcomment %}
+                                    <a class="show dropdown-item text-white display-4"
+                                    href="{% url 'apps.noticia:filtros' %}">TODAS</a> 
+                                    {% if categorias %}
+                                        {% for cat in categorias %}
+                                        {% comment %} <a class="nav-link link text-white display-4" href="{% url 'apps.noticia:categoria' cat.id %}">{{ cat }}</a> {% endcomment %}
+                                        <a class="show dropdown-item text-white display-4" href="{% url 'apps.noticia:categoria' cat.id %}">{{ cat }}</a>
+                                        {% endfor %}
+
+                                    {% else %}
+                                        <h1>ERROR 125</h1>
+                                    {% endif %}
+                                </div>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link link text-white display-4"
+                                    href="{% url 'nosotros' %}">NOSOTROS</a></li>
+
+                            <li class="nav-item"><a class="nav-link link text-white display-4"
+                                    href="{% url 'contacto' %}">CONTACTO</a></li>
+
+                            <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4"
+                                    {% comment %} href="#top"{% endcomment %} data-toggle="dropdown-submenu" data-bs-toggle="dropdown" 
+                                    data-bs-auto-close="outside" aria-expanded="false"><span
+                                        class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>MI
+                                    CUENTA</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-375">
+                                {% if user.is_authenticated %}
+                                    {% if user.is_superuser %}
+                                    <a class="show dropdown-item text-white display-4" href="{% url 'apps.noticia:addNoticia' %}">Crear Post</a>
+                                    {% comment %} <a class="show dropdown-item text-white display-4" href="#">Mis Post</a> {% endcomment %}
+                                    <a class="show dropdown-item text-white display-4" href="/admin">Panel👑</a>
+                                    {% endif %}
+                                    {% comment %} <a class="show dropdown-item text-white display-4" href="#">Ajustes</a> {% endcomment %}
+                                    <a class="show dropdown-item text-white display-4" href="{% url 'apps.usuario:logout' %}">Salir</a>
+                                {% else %}
+                                    <a class="show dropdown-item text-white display-4" href="{% url 'apps.usuario:login' %}">Conectarse</a>
+                                    <a class="show dropdown-item text-white display-4" href="{% url 'apps.usuario:register' %}">Registrarse</a>
+                                {% endif %}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+<main>
+
+    {% block contenido %}
+    {% endblock %}
+    
+</main>
+
+    <!-- Footer -->
+    <footer>
+        <section data-bs-version="5.1" class="footer3 cid-tegSAH9uUt mbr-reveal" once="footers" id="footer3-21">
+            <div class="container-fluid">
+                <div class="media-container-row align-center mbr-white">
+                    <div class="row row-links">
+                        {% comment %} <ul class="foot-menu">
+                            <li class="foot-menu-item mbr-fonts-style display-7"><a class="text-white" href="{% url 'index' %}">Inicio</a></li>
+                            <li class="foot-menu-item mbr-fonts-style display-7"><a class="text-white" href="{% url 'noticias' %}">Noticias</a></li>
+                            <li class="foot-menu-item mbr-fonts-style display-7"><a class="text-white" href="{% url 'nosotros' %}">Nosotros</a></li>
+                            <li class="foot-menu-item mbr-fonts-style display-7"><a class="text-white" href="{% url 'contacto' %}">Contacto</a></li>
+                        </ul> {% endcomment %}
+                    </div>
+                    <div class="row social-row">
+                        <div class="social-list align-right pb-2">
+                            <div class="soc-item">
+                                <a href="https://twitter.com/search?q=asociacion%20oportunidad%20de%20cambio%20machagai&src=typed_query" target="_blank">
+                                    <span class="mbr-iconfont mbr-iconfont-social socicon-twitter socicon"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                {% if is_mobile %}
+                                <a class="mobile" href="fb://facewebmodal/f?href=https://www.facebook.com/oportunidadecambio" target="_blank">
+                                    <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
+                                </a>
+                                {% else %}
+                                <a href="https://www.facebook.com/oportunidadecambio" target="_blank">
+                                    <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="soc-item">
+                                <a href="https://www.instagram.com/oportunidaddecambiomachagai" target="_blank">
+                                    <span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="https://www.youtube.com/channel/UC1d7YyEAKvGMffpCCiExGYg" target="_blank">
+                                    <span class="mbr-iconfont mbr-iconfont-social socicon-youtube socicon"></span>
+                                </a>
+                            </div>
+                            {% comment %} <div class="soc-item">
+                                <a href="https://wa.me/543734403707" target="_blank">
+                                    <span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
+                                </a>
+                            </div> {% endcomment %}
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <img class="foot-img" src="{% static 'img/oportunidad_de_cambio2.png' %}">
+                    </div>
+                    <div class="row row-copirayt">
+                        <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                            © Copyright 2022 Informatorio - Chaco. All Rights Reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <section>
+        <a href="https://mobiri"></a>
+        <a href="https://mobiri"></a>
+    </section>
+
+    
+    <!-- Includes -->
+    {% include 'componentes/chatbro.html' %}
+    {% include 'componentes/whatsapp.html' %}
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <span id='Boton-ir-arriba'></span>
+    <script src="{% static 'assets/toparrow/js/script.js' %}"></script>
+    <script src="{% static 'assets/whatsapp/js/whatsapp.js' %}"></script>
+    {% comment %} <script type="text/javascript" src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script> {% endcomment %}
+    <script type="text/javascript" src="{% static 'assets/smoothscroll/smooth-scroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/ytplayer/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/vimeoplayer/player.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/dropdown/js/navbar-dropdown.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/theme/js/script.js' %}"></script>
+    <!-- Fin de scripts -->
+  
+</body>
+</html>

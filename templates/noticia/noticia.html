@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/comentarios.css' %}">
+
+<title>Noticias</title>
+<main>
+    <section data-bs-version="5.1" class="content2 cid-teaDptnH4j" id="content2-1r">
+        {% if noticia %}
+            <div class="container">
+                <div class="mbr-section-head">
+                        <br>
+                        <ol class="breadcrumb">
+                            <li><a href="#">/Todas</a></li>
+                            <li><a href="#">/sdfsdfsd</a></li>
+                            <li><a href="#">/585858</a></li>
+                        </ol>
+                    <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>{{ noticia.titulo }}</strong></h4>
+                </div>
+                <div class="row mt-4">
+                    <div class="item features-image сol-12">
+                        <div class="item-wrapper">
+                            <div class="item-img">
+                                <img src="{{ noticia.imagen.url }}" alt="{% static 'img/noticia/default.jpg' %}" title="{{ noticia.titulo }}" data-slide-to="3" data-bs-slide-to="3">
+                                <p class="btn btn-danger btn-sm item-categoria">{{ noticia.categoria.nombre }}</p>
+                            </div> 
+                            <div class="item-content">
+                                <h6 class="item-subtitle mbr-fonts-style mt-1 display-7"><strong>Autor: {{ noticia.usuario.first_name }} {{ noticia.usuario.last_name }} ({{ noticia.usuario.username }})</strong></h6>
+                                <em>{% comment %}&nbsp;{% endcomment %}{{ noticia.fecha_publicacion }}</em> 
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7">{{ noticia.resumen }}<br>
+                                </p>
+                                <div class="mbr-text mbr-fonts-style mt-3 display-7 item-contenido" style="max-width: 100%;">
+                                    {{ noticia.contenido|safe }}
+                                </div>
+                                <hr>
+                                {% if user.is_authenticated %}
+                                <div class="likes-dislikes">
+                                    <ul class="list-inline d-sm-flex my-0">
+                                        <li class="list-inline-item g-mr-20">
+                                            <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                <form method="POST" action="{% url 'apps.noticia:agregarLike' noticia.pk %}">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="next" value="{{request.path}}">
+                                                    <button type="submit" class="">
+                                                        {% if request.user in noticia.likes.all %}
+                                                        <i class="fa fa-duotone fa-thumbs-up azul-claro-like g-pos-rel g-top-1 g-mr-3"></i>
+                                                        {% else %}
+                                                        <i class="fa fa-thumbs-up g-color-gray-dark-v4 g-pos-rel g-top-1 g-mr-3"></i>
+                                                        {% endif %}
+                                                        {{ noticia.likes.all.count }}
+                                                    </button>
+                                                </form>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item g-mr-20">
+                                            <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                <form method="POST" action="{% url 'apps.noticia:agregarDislike' noticia.pk %}">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="next" value="{{request.path}}">
+                                                    <button type="submit" class="">
+                                                        {% if request.user in noticia.dislikes.all %}
+                                                        <i class="fa fa-duotone fa-thumbs-down azul-claro-like g-pos-rel g-top-1 g-mr-3"></i>
+                                                        {% else %}
+                                                            <i class="fa fa-thumbs-down g-color-gray-dark-v4 g-pos-rel g-top-1 g-mr-3"></i>
+                                                            {% endif %}
+                                                            {{ noticia.dislikes.all.count }}
+                                                        </button>
+                                                    </form>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item ml-auto">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#comentar">
+                                                    <i class="fa fa-solid fa-regular fa-comment-dots g-pos-rel g-top-1 g-mr-3"></i>
+                                                    Comentar
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {% else %}
+                                    <div class="likes-dislikes">
+                                        <ul class="list-inline d-sm-flex my-0">
+                                            <li class="list-inline-item g-mr-20">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="{% url 'apps.usuario:login' %}">
+                                                    <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                                    {{ noticia.likes.all.count }}
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item g-mr-20">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="{% url 'apps.usuario:login' %}">
+                                                    <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                                    {{ noticia.dislikes.all.count }}
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item ml-auto">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#comentar">
+                                                    <i class="fa fa-solid fa-comment-dots g-pos-rel g-top-1 g-mr-3"></i>
+                                                    Comentar
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {% endif %}
+                                    {% comment %} SOCIAL {% endcomment %}
+                                    {% comment %} <hr> {% endcomment %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 class="comentarios-titulo"><em>COMENTARIOS ({{ comentarios.all.count }})</em></h2>
+            <div class="container">
+                {% for comentario in comentarios %}
+                    {% if comentario.aprobado %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="media g-mb-30 media-comment">
+                                    <div class="izq-comentarios">
+                                        {% if comentario.usuario.socialaccount_set.all.0.get_avatar_url %}
+                                            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="{{ comentario.usuario.socialaccount_set.all.0.get_avatar_url }}" alt="" title="{{ comentario.usuario.username }}">
+                                        {% elif comentario.usuario.imagen.url %}
+                                            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="{{ comentario.usuario.imagen.url }}" alt="" title="{{ comentario.usuario.username }}">
+                                        {% else %}
+                                            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="{% static 'img/usuario/default.png' %}" alt="" title="{{ comentario.usuario.username }}">
+                                        {% endif %}
+                                        {% comment %} <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="{{ comentario.usuario.socialaccount_set.all.0.get_avatar_url }}" alt="Imagen" title="{{comentario.usuario.username}}"> {% endcomment %}
+                                        <p class="username">{{ comentario.usuario.username }}</p>
+                                    </div>
+                                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                                        <div class="g-mb-15">
+                                            <h5 class="h5 g-color-gray-dark-v1 mb-0">{{ comentario.usuario.first_name }} {{ comentario.usuario.last_name }}</h5>
+                                            <span class="g-color-gray-dark-v4 g-font-size-12">{{ comentario.fecha_de_creacion }}</span>
+                                        </div>
+                                
+                                        <p>{{ comentario.comentario }}</p>
+                                
+                                        {% if user.is_authenticated %}
+                                        <div class="likes-dislikes-comentarios">
+                                            <ul class="list-inline d-sm-flex my-0">
+                                                <li class="list-inline-item g-mr-20">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                    <form method="POST" action="{% url 'AgregarLikeComentario' noticia.pk comentario.pk %}">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="next" value="{{request.path}}">
+                                                        <button type="submit" class="">
+                                                            {% if request.user in comentario.likes.all %}
+                                                                <i class="fa fa-duotone fa-thumbs-up azul-claro-like g-pos-rel g-top-1 g-mr-3"></i>
+                                                            {% else %}
+                                                                <i class="fa fa-thumbs-up g-color-gray-dark-v4 g-pos-rel g-top-1 g-mr-3"></i>
+                                                            {% endif %}
+                                                            {{ comentario.likes.all.count }}
+                                                        </button>
+                                                    </form>
+                                                </a>
+                                                </li>
+                                                <li class="list-inline-item g-mr-20">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                    <form method="POST" action="{% url 'AgregarDislikeComentario' noticia.pk comentario.pk %}">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="next" value="{{request.path}}">
+                                                        <button type="submit" class="">
+                                                            {% if request.user in comentario.dislikes.all %}
+                                                                <i class="fa fa-duotone fa-thumbs-down azul-claro-like g-pos-rel g-top-1 g-mr-3"></i>
+                                                            {% else %}
+                                                                <i class="fa fa-thumbs-down g-color-gray-dark-v4 g-pos-rel g-top-1 g-mr-3"></i>
+                                                            {% endif %}
+                                                            {{ comentario.dislikes.all.count }}
+                                                        </button>
+                                                    </form>
+                                                </a>
+                                                </li>
+                                                <li class="list-inline-item ml-auto">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#comentar">
+                                                    <i class="fa fa-solid fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                                    Responder
+                                                </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {% else %}
+                                        <div class="likes-dislikes-comentarios">
+                                            <ul class="list-inline d-sm-flex my-0">
+                                                <li class="list-inline-item g-mr-20">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="{% url 'apps.usuario:login' %}">
+                                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                                        {{ comentario.likes.all.count }}
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item g-mr-20">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="{% url 'apps.usuario:login' %}">
+                                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                                        {{ comentario.dislikes.all.count }}
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item ml-auto">
+                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#comentar">
+                                                    <i class="fa fa-solid fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                                    Responder
+                                                </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <hr id="comentar">
+    
+                <div>
+                    <br>
+                    <p></p>
+                    <h3 class="comentarios-titulo">Comentar</h3>
+                    <p></p>
+                    <br>
+                </div>
+    
+                <div class="mb-3">
+                    {% include 'comentario/addComentario.html' %}
+                </div>
+            </div>
+
+
+            
+        {% else %}
+            <h1>Pubicación borrada</h1>
+        {% endif %}
+
+    </section>
+</main>
+
+{% endblock %}

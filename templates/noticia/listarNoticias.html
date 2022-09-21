@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% comment %} {% load static %}
+{% block contenido %}
+    {% if object_list %}
+        
+        {% for p in object_list %}
+
+        <h1>{{p.titulo}}</h1>
+        {{p.texto|safe}}
+        <p>{{p.fecha}}</p>
+
+        {% endfor %}
+
+    {% else %}
+        <h1>hay tabla</h1>
+    {% endif %}
+{% endblock %}  {% endcomment %}
+{% block contenido %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<title>Noticias</title> 
+
+
+<section data-bs-version="5.1" class="content2 cid-teaDptnH4j" id="content2-1r">
+    <div class="container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Noticias</strong></h4>
+        </div>
+        <div class="row mt-4">
+            {% if object_list %}
+                {% for noticia in object_list %}
+                    {% if noticia.activo %}
+                    <div class="item features-image сol-12 col-md-6 col-lg-4">
+                        <div class="item-wrapper">
+                            <div class="item-img">
+                                {% if noticia.imagen.url %}
+                                    <img src="{{ noticia.imagen.url }}" alt="" title="" data-slide-to="3" data-bs-slide-to="3">
+                                {% else %}
+                                    <img src="{% static 'img/noticia/default.jpg' %}" alt="" title="" data-slide-to="3" data-bs-slide-to="3">
+                                {% endif %}
+                                <p class="btn btn-danger btn-sm item-categoria">{{ noticia.categoria.nombre }}</p>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><a href="{% url 'listarNoticia' noticia.id %}" class="text-primary">{{ noticia.titulo }}</a></h5>
+                                <h6 class="item-subtitle mbr-fonts-style mt-1 display-7"><strong>Autor: {{ noticia.usuario.first_name }} {{ noticia.usuario.last_name }} ({{ noticia.usuario.username }})</strong></h6>
+                                <em>{% comment %}&nbsp;{% endcomment %}{{ noticia.fecha_publicacion }}</em> 
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7">{{ noticia.resumen }}<br>
+                                </p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'listarNoticia' noticia.id %}"
+                                class="btn btn-primary item-btn display-7">Leer Más
+                                &gt;</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <h1>No hay publicaciones</h1>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

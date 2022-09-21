@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block contenido %}
+{% load static %}
+
+
+
+<main>
+    <section data-bs-version="5.1" class="features16 cid-tegT1UhPUn" id="features17-24">
+        <div class="container-fluid">
+            <div class="content-wrapper">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-5">
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/mbr-1248x624.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg">
+                        <div class="text-wrapper">
+                            <h6 class="card-title mbr-fonts-style display-5"><strong>Misión</strong></h6>
+                            <p class="mbr-text mbr-fonts-style mb-4 display-4"><br>- Fomentar el desarrollo de la
+                                educación, de la salud, y el bienestar social; Lograr el mejoramiento de la calidad de
+                                vida.<br>
+                                <br>- Estimular la participación cívica y solidaria. Crear ámbitos de integración y
+                                recreación.<br>
+                                <br> - Promover la dignidad humana en toda su dimensión ética y cultural,
+                                particularmente la igualdad efectiva de oportunidades entre el hombre y la mujer y los
+                                derechos de la infancia.&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-bs-version="5.1" class="features15 cid-tegT2oe4WD" id="features16-25">
+        <div class="container-fluid">
+            <div class="content-wrapper">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg">
+                        <div class="text-wrapper">
+                            <h6 class="card-title mbr-fonts-style display-2">
+                                <strong>Visión</strong>
+                            </h6>
+                            <p class="mbr-text mbr-fonts-style mb-4 display-4"><br>Actualmente la ONG trabaja en tres
+                                instalaciones propias, en diferentes puntos de la localidad, a los que asisten
+                                mayoritariamente niños de barriadas carenciadas; En este contexto los comedores se
+                                convierten en un espacio de contención en el que, además de proporcionarles alimento, se
+                                les brinda esparcimiento, apoyo escolar, actividades culturales y recreativas; afecto y
+                                atención. Allí niños son escuchados y contenidos.<br>
+                                <br>Queremos llegar a ser una ONG que sea destacada en la región por el acompañamiento
+                                que brinda a la comunidad, el esfuerzo de quienes participamos y, por el apoyo de
+                                quienes nos ayudan y acompañan.&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <div class="image-wrapper">
+                            <img src="{% static 'img/mbr-1248x1248.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-bs-version="5.1" class="people5 mbr-embla cid-tegT2YoyZa" id="people5-26">
+        <div class="position-relative text-center">
+            <h3 class="mb-4 mbr-fonts-style display-2">
+                <strong>Consejo de Administración</strong>
+            </h3>
+
+            <div class="embla" data-skip-snaps="true" data-align="center" data-loop="true" data-auto-play="true"
+                data-auto-play-interval="5" data-draggable="true">
+                <div class="embla__viewport container-fluid">
+                    <div class="embla__container">
+                        
+                        {% if miembro %}
+                            {% for m in miembro %}
+                                <div class="embla__slide slider-image item">
+                                    <div class="user">
+                                        <div class="user_image">
+                                            <div class="item-wrapper position-relative">
+                                                <img src="{{ m.imagen.url }}" alt="{% static 'img/usuario/mujer_1.png' %}" title="{{ m }}">
+                                            </div>
+                                        </div>
+                                        <div class="user_text mb-4">
+                                            <p class="mbr-fonts-style display-7">
+                                                {{ m.texto }}
+                                            </p>
+                                        </div>
+                                        <div class="user_name mbr-fonts-style mb-2 display-7">
+                                            <strong>{{ m }}</strong>
+                                        </div>
+                                        <div class="user_desk mbr-fonts-style display-7">
+                                            {{ m.cargo.upper }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                    </div>
+                </div>
+                <button class="embla__button embla__button--prev">
+                    <span class="mobi-mbri mobi-mbri-arrow-prev mbr-iconfont" aria-hidden="true"></span>
+                    <span class="sr-only visually-hidden visually-hidden">Previous</span>
+                </button>
+                <button class="embla__button embla__button--next">
+                    <span class="mobi-mbri mobi-mbri-arrow-next mbr-iconfont" aria-hidden="true"></span>
+                    <span class="sr-only visually-hidden visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="{% static 'assets/embla/embla.min.js' %}"></script>
+<script src="{% static 'assets/embla/script.js' %}"></script>
+{% endblock %}
